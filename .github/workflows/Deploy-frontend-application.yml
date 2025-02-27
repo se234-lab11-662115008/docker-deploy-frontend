@@ -32,7 +32,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: your-docker-username/234-deploylab-frontend:latest
+          tags: kengchayodom/234-deploylab-frontend:latest
 
       - name: Copy docker-compose file via SSH
         uses: appleboy/scp-action@v0.1.7
