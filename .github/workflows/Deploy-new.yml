@@ -40,7 +40,7 @@ jobs:
           host: ${{ secrets.HOST_SERVER }}
           username: ${{ secrets.HOST_USER_NAME }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
-          source: "docker-compose-prod.yml"
+          source: "docker-compose-new.yml"
           target: "/home/ubuntu/frontend"
 
       - name: Deploy using Docker Compose
@@ -53,7 +53,7 @@ jobs:
           script: |
             cd /home/ubuntu/frontend
             echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
-            docker compose -f docker-compose-prod.yml down
-            docker compose -f docker-compose-prod.yml pull
-            docker compose -f docker-compose-prod.yml up -d
+            docker compose -f docker-compose-new.yml down
+            docker compose -f docker-compose-new.yml pull
+            docker compose -f docker-compose-new.yml up -d
             rm -rf /home/ubuntu/frontend
