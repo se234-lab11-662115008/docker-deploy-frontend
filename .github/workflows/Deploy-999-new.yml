@@ -1,4 +1,4 @@
-name: Deploy frontend application new
+name: Deploy frontend application
 
 'on':
   push:
@@ -40,7 +40,6 @@ jobs:
           host: ${{ secrets.HOST_SERVER }}
           username: ${{ secrets.HOST_USER_NAME }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
-          port: 22
           source: "docker-compose-prod.yml"
           target: "/home/ubuntu/frontend"
 
