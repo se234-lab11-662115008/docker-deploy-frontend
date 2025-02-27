@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+  frontend:
+    image: kengchayodom/234-deploylab-frontend-new:latest
+    pull_policy: always
+    ports:
+      - "9999:80"

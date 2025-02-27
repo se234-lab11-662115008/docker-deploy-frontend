@@ -1,9 +1,9 @@
-name: Deploy frontend application
+name: Deploy frontend application new
 
 'on':
   push:
     branches:
-      - main
+      - new
 
 jobs:
   docker:
@@ -32,7 +32,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: kengchayodom/234-deploylab-frontend:latest
+          tags: kengchayodom/234-deploylab-frontend-new:latest
 
       - name: Copy docker-compose file via SSH
         uses: appleboy/scp-action@v0.1.7
@@ -54,7 +54,7 @@ jobs:
           script: |
             cd /home/ubuntu/frontend
             echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
-            docker-compose down
-            docker-compose pull
-            docker-compose -d
+            docker-compose -f docker-compose-prod.yml down
+            docker-compose -f docker-compose-prod.yml pull
+            docker-compose -f docker-compose-prod.yml up -d
             rm -rf /home/ubuntu/frontend
